@@ -16,8 +16,10 @@ from keras.preprocessing.image import ImageDataGenerator
 
 aug = ImageDataGenerator(rescale=1/255.0)
 
-train_ds = aug.flow_from_directory(train_paths, target_size=(224,224),  class_mode='categorical' ,batch_size=128,shuffle = True)
-val_ds =  aug.flow_from_directory(val_paths, target_size=(224,224), class_mode='categorical', batch_size=128 )
+train_ds = aug.flow_from_directory(train_paths, target_size=(224,224),  
+                                   class_mode='categorical' ,batch_size=128,shuffle = True)
+val_ds =  aug.flow_from_directory(val_paths, target_size=(224,224), 
+                                  class_mode='categorical', batch_size=128 )
 test = aug.flow_from_directory(test_path,class_mode="categorical", target_size=(224,224), batch_size=64 )
 
 model = ...
