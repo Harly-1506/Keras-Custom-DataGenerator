@@ -97,5 +97,72 @@ class DataGenerator(Sequence):
               y.append(self.labels[ID])
 
         return X, keras.utils.to_categorical(y, num_classes=self.n_classes)
+        
+configs = {'batch_size': 64,
+          'dim': (128,128),
+          'n_channels' : 3,
+          'n_classes': 29,
+          'shuffle': True}
+
+# Load datasets
+train_generator = DataGenerator(train_images_path, train_labels, **configs)
+val_generator = DataGenerator(val_images_path, val_labels, **configs)
+
+model = ...
+model.fit(train_generator, validation_data = val_generator, epochs= 50)
 
 ```
+
+#### Data Generator with albumentations
+
+- You can use custom your data when you load batch_size to your liking, you can use **albumentations** like this code below
+
+```python
+from albumentations import ( 
+Transpose, Compose, Rotate, RandomBrightness, RandomContrast, RandomRotate90
+) 
+
+transforms_train = Compose([
+            Rotate(limit=40),
+            RandomBrightness(limit=0.1),
+            RandomContrast(limit=0.2, p=0.5),
+            RandomRotate90(),
+            Transpose(),         
+        ])
+        
+def train_fn(image):
+  data = {"image":image}
+  aug_data = transforms_train(**data)
+  aug_img = aug_data["image"]
+  return aug_img
+  
+class DataGenerator(Sequence):
+   .....
+
+  def __data_generation(self, list_IDs_temps):
+      X = np.empty((self.batch_size, *self.dim, self.n_channels))
+      y = []
+      for i, ID in enumerate(list_IDs_temps):
+            # processing for your image or your data
+            .....
+            if self.augmentaiton == True:
+              img = train_fn(img)
+
+            X[i,] = img
+            y.append(self.labels[ID])
+
+      return X, keras.utils.to_categorical(y, num_classes=self.n_classes)
+```
+## 3.Run code in this repo
+
+```
+git clone https://github.com/Harly-1506/Keras-Custom-DataGenerator.git
+```
+- After that, run file **main.ipynb** in your jupyter or Colab
+
+___
+**If you like  this repo, just star to support me** :star:
+
+**Enjoy with Code** :wink:
+
+**Harly**
