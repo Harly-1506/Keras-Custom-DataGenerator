@@ -35,3 +35,9 @@ H = model.fit(train_ds, validation_data = val_ds, epochs= 5)
 ## 2. Keras Custom dataGenerator :dart:
 
 - To custom Data Generator. Keras provides us with the Sequence class and allows us to create classes that can inherit from it.
+  
+    - Initialization function: **__init__()**: includes the function's input as images and labels and image properties such as dimension, number of layers
+    -  **on_epoch_end()** function: update indexes through each epoch and suffle data if suffle = True
+    - **__len__()** function: Returns the number of batches per epoch
+    - **__data_generation()** function: Load image in batch_size
+    - **__getitem__()** function: get indexes and return batch of images according to __data_generation() function
