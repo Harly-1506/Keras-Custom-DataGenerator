@@ -43,6 +43,12 @@ H = model.fit(train_ds, validation_data = val_ds, epochs= 5)
     - **__getitem__()** function: get indexes and return batch of images according to __data_generation() function
  
 ```python
+from tensorflow.keras.utils import Sequence, to_categorical
+import numpy as np
+import cv2
+import keras
+
+
 class DataGenerator(Sequence):
     def __init__(self,
                  img_paths,
@@ -91,4 +97,5 @@ class DataGenerator(Sequence):
               y.append(self.labels[ID])
 
         return X, keras.utils.to_categorical(y, num_classes=self.n_classes)
+
 ```
