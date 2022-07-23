@@ -33,3 +33,5 @@ H = model.fit(train_ds, validation_data = val_ds, epochs= 5)
 - I have full example [here](https://github.com/Harly-1506/American-Sign-languages-datasets-Classification/blob/main/ASL_ResNet50.ipynb) :smile:
 
 ## 2. Keras Custom dataGenerator :dart:
+
+- To custom Data Generator. Keras provides us with the Sequence class and allows us to create classes that can inherit from it.
