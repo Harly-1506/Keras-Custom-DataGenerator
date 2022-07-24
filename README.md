@@ -158,7 +158,7 @@ class DataGenerator(Sequence):
 ```
 git clone https://github.com/Harly-1506/Keras-Custom-DataGenerator.git
 ```
-- After that, run file **main.ipynb** in your Jupyter notebook or you can use Colab nodebook
+- After that, run file **main.ipynb** in your Jupyter notebook or you can use Colab notebook
 
 ___
 **If you like  this repo, just star to support me** :star:
